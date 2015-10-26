@@ -1,9 +1,12 @@
 
+
 puts "Play Rock, Paper, Scissors!"
 
 loop do
-  puts "Choose one: (R/P/S)"
-  player_choice = gets.chomp
+  begin
+    puts "Choose one: (R/P/S)"
+    player_choice = gets.chomp
+  end until %(R P S).include?(player_choice)
   computer_choice = %w(R P S).sample
   puts "You picked #{player_choice} and computer picked #{computer_choice}."
   result = player_choice + computer_choice
