@@ -1,26 +1,23 @@
-# Welcome message
-# Ask user for input (P/R/S)
-# Get user input
-# Generate random selection by the computer
-# Compare the two and declare a winner
-# Ask if you want to play again
-# Y => repeat loop
-# N => exit loop
-
-options = ['R', 'P', 'S']
 
 puts "Play Rock, Paper, Scissors!"
 
-# create methods to say who won
-
-while play_again? != 'N'
-puts "Choose one: (R/P/S)"
-player_choice = gets.chomp
-
-computer_choice = options.sample
-
-puts player_choice
-puts computer_choice
-
-if player_choice == 'R' & computer_choice == 'R'
-	puts "You tied!"
+loop do
+  puts "Choose one: (R/P/S)"
+  player_choice = gets.chomp
+  computer_choice = %w(R P S).sample
+  puts "You picked #{player_choice} and computer picked #{computer_choice}."
+  result = player_choice + computer_choice
+  case result
+  when 'RR' || 'SS' || 'PP'
+    puts "It's a tie."
+  when 'RS' || 'PR' || 'SP'
+    puts "You won!"
+  else
+    puts "You lost!"
+  end
+  puts "Play again? (Y/N)"
+  play_again = gets.chomp
+  if play_again != 'Y'
+    break
+  end
+end
