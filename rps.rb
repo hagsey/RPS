@@ -23,9 +23,9 @@ loop do
   result = player_choice + computer_choice
 
   case result
-  when 'RR' || 'SS' || 'PP'
+  when 'RR', 'SS', 'PP'
     puts "It's a tie."
-  when 'RS' || 'PR' || 'SP'
+  when 'RS', 'PR', 'SP'
     display_winning_message(player_choice)
     puts "You won!"
   else
@@ -33,8 +33,6 @@ loop do
     puts "You lost!"
   end
   puts "Play again? (Y/N)"
-  play_again = gets.chomp
-  if play_again != 'Y'
-    break
-  end
+  play_again = gets.chomp.upcase
+  break unless play_again == 'Y'
 end
